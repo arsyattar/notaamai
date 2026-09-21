@@ -1,0 +1,90 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Amai Nota — Kwitansi Komisi Digital",
+  description = "Aplikasi kwitansi digital untuk pembuatan nota komisi Amai Nota.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f0ebe2" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- html2canvas for receipt image generation -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    /* ── Golden Cream Theme ───────────────────────── */
+    --amai-bg:       #f0ebe2;   /* warm cream page background  */
+    --amai-surface:  #faf7f2;   /* panel / sidebar surface     */
+    --amai-surface2: #ffffff;   /* card / input background     */
+    --amai-border:   #ddd3b8;   /* warm tan border             */
+    --amai-accent:   #c9972a;   /* warm gold — primary action  */
+    --amai-soft:     #e8c060;   /* light gold highlight        */
+    --amai-cream:    #2a1f0e;   /* primary text (dark brown)   */
+    --amai-muted:    #8b7355;   /* secondary / placeholder     */
+    --amai-gold:     #c9972a;   /* price emphasis              */
+    --amai-success:  #4a8a50;   /* paid / lunas green          */
+    --amai-tag:      #d4a832;   /* badge / tag accent          */
+    --font-heading:  'Playfair Display', Georgia, serif;
+    --font-body:     'Nunito', 'Segoe UI', sans-serif;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    background: var(--amai-bg);
+    color: var(--amai-cream);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track  { background: var(--amai-bg); }
+  ::-webkit-scrollbar-thumb  { background: var(--amai-border); border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--amai-accent); }
+
+  ::selection {
+    background: rgba(201, 151, 42, 0.25);
+    color: var(--amai-cream);
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button { opacity: 0.4; }
+</style>
