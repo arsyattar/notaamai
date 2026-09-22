@@ -126,14 +126,14 @@ import Layout from '../layouts/Layout.astro';
               Nama Customer <span class="req-star" title="Wajib diisi">*</span>
             </label>
             <input type="text" id="c-name" class="field-input"
-              placeholder="cth: Kak Sakura (wajib)" autocomplete="off" required />
+              placeholder="cth: Kak Sakura" autocomplete="off" required />
           </div>
           <div class="field">
             <label class="field-label" for="c-wa">
-              No. WhatsApp / Kontak <span class="req-star" title="Wajib diisi">*</span>
+              No. WhatsApp <span class="req-star" title="Wajib diisi">*</span>
             </label>
             <input type="text" id="c-wa" class="field-input"
-              placeholder="cth: 08123456789 (wajib)" autocomplete="off" required />
+              placeholder="cth: 08123456789" autocomplete="off" required />
           </div>
         </div>
       </div>
@@ -259,8 +259,8 @@ import Layout from '../layouts/Layout.astro';
     <div id="r-render"></div>
     <div class="r-modal-btns">
       <button class="r-close-btn" id="r-close" type="button">✕ Tutup</button>
-      <button class="r-wa-btn" id="r-wa" type="button">💬 Kirim WhatsApp</button>
-      <button class="r-dl-btn" id="r-dl" type="button">⬇ Unduh Foto Nota</button>
+      <button class="r-wa-btn" id="r-wa" type="button">💬 <span class="r-btn-txt">Kirim </span>WhatsApp</button>
+      <button class="r-dl-btn" id="r-dl" type="button">⬇ Unduh<span class="r-btn-txt"> Foto</span> Nota</button>
     </div>
   </div>
 </div>
@@ -274,35 +274,69 @@ import Layout from '../layouts/Layout.astro';
 
   /* ── PRODUCTS (IDR & USD) ───────────────────────── */
   var PRODUCTS = [
-    { id:'bust-up',     name:'Bust Up',                        priceIDR:80000,  priceUSD:25,  cat:'ilustrasi', badge:null,          approx:false },
-    { id:'avatar-icon', name:'Genshin Avatar Icon',            priceIDR:100000, priceUSD:30,  cat:'ilustrasi', badge:null,          approx:false },
-    { id:'half-body',   name:'Half Body',                      priceIDR:150000, priceUSD:40,  cat:'ilustrasi', badge:null,          approx:false },
-    { id:'full-body',   name:'Full Body',                      priceIDR:200000, priceUSD:60,  cat:'ilustrasi', badge:null,          approx:false },
-    { id:'drip',        name:'Genshin Drip Marketing',         priceIDR:260000, priceUSD:70,  cat:'ilustrasi', badge:null,          approx:false },
-    { id:'cs-simple',   name:'Character Sheet (Simple)',       priceIDR:250000, priceUSD:85,  cat:'charsheet', badge:'CS Simple',   approx:true  },
-    { id:'cs-over',     name:'Character Sheet (Overdetailed)', priceIDR:500000, priceUSD:140, cat:'charsheet', badge:'CS Over',     approx:true, displayPriceUSD:'$140–$150~' },
-    { id:'addon-bg',    name:'Background',                     priceIDR:50000,  priceUSD:8,   cat:'addon',     badge:null,          approx:false },
-    { id:'addon-rush1', name:'Rush Fee (1 hari kerja)',        priceIDR:50000,  priceUSD:8,   cat:'addon',     badge:'Rush',        approx:false },
-    { id:'addon-rush2', name:'Rush Fee (2 hari kerja)',        priceIDR:25000,  priceUSD:5,   cat:'addon',     badge:'Rush',        approx:false },
-    { id:'addon-rush3', name:'Rush Fee (3 hari kerja)',        priceIDR:10000,  priceUSD:2,   cat:'addon',     badge:'Rush',        approx:false },
-    { id:'addon-rev',   name:'Revisi Ekstra',                  priceIDR:10000,  priceUSD:2,   cat:'addon',     badge:null,          approx:false },
-    { id:'addon-bgs',   name:'BG + Detail (Simple)',           priceIDR:30000,  priceUSD:5,   cat:'addon',     badge:'BG+',         approx:false },
-    { id:'addon-bgm',   name:'BG + Detail (Medium)',           priceIDR:100000, priceUSD:15,  cat:'addon',     badge:'BG+',         approx:false },
-    { id:'addon-bgf',   name:'BG + Detail (Full)',             priceIDR:200000, priceUSD:25,  cat:'addon',     badge:'BG+',         approx:false },
-    { id:'addon-couple',name:'Couple (2× base price)',          priceIDR:0,      priceUSD:0,   cat:'addon',     badge:'Couple',      approx:true  },
-    { id:'addon-comm',  name:'Commercial Use (2× base)',       priceIDR:0,      priceUSD:0,   cat:'addon',     badge:'Commercial',  approx:true  },
-    { id:'addon-custom',name:'Item Lainnya / Custom',          priceIDR:0,      priceUSD:0,   cat:'addon',     badge:'Bebas Isi',   approx:false, isCustom:true },
+    /* 1. Paket Ilustrasi */
+    { id:'bust-up',     name:'Bust Up',                          priceIDR:140000, priceUSD:25,  cat:'ilustrasi', badge:null,         approx:false },
+    { id:'avatar-icon', name:'Genshin Avatar Icon',              priceIDR:100000, priceUSD:30,  cat:'ilustrasi', badge:null,         approx:false },
+    { id:'half-body',   name:'Half Body',                        priceIDR:250000, priceUSD:40,  cat:'ilustrasi', badge:null,         approx:false },
+    { id:'full-body',   name:'Full Body',                        priceIDR:300000, priceUSD:60,  cat:'ilustrasi', badge:null,         approx:false },
+    { id:'drip',        name:'Genshin Drip Marketing',           priceIDR:400000, priceUSD:70,  cat:'ilustrasi', badge:null,         approx:false },
+
+    /* 2. Character Sheet */
+    { id:'cs-simple',   name:'Character Sheet (Simple)',         priceIDR:350000, priceUSD:85,  cat:'charsheet', badge:'CS Simple',  approx:true  },
+    { id:'cs-over',     name:'Character Sheet (Overdetailed)',   priceIDR:700000, priceUSD:140, cat:'charsheet', badge:'CS Over', badgeUSD:'$140~', approx:true },
+    { id:'cs-over-145', name:'Character Sheet (Overdetailed)',   priceIDR:700000, priceUSD:145, cat:'charsheet', badge:'CS Over', badgeUSD:'$145~', approx:true, onlyUSD:true },
+    { id:'cs-over-150', name:'Character Sheet (Overdetailed)',   priceIDR:700000, priceUSD:150, cat:'charsheet', badge:'CS Over', badgeUSD:'$150~', approx:true, onlyUSD:true },
+
+    /* 3. Add-on & Printilan */
+    { id:'addon-bg',    name:'Background Art',                   priceIDR:50000,  priceUSD:10,  cat:'addon',     badge:null,         approx:false },
+
+    /* Rush Fee (Priority Express) — Pilihan nominal bertingkat dengan penanda tag */
+    { id:'rush-10k',    name:'Rush Fee (Priority Express)',      priceIDR:10000,  priceUSD:3,   cat:'addon',     badgeIDR:'10k', badgeUSD:'$3', approx:false },
+    { id:'rush-15k',    name:'Rush Fee (Priority Express)',      priceIDR:15000,  priceUSD:4,   cat:'addon',     badgeIDR:'15k', badgeUSD:'$4', approx:false },
+    { id:'rush-20k',    name:'Rush Fee (Priority Express)',      priceIDR:20000,  priceUSD:5,   cat:'addon',     badgeIDR:'20k', badgeUSD:'$5', approx:false },
+    { id:'rush-25k',    name:'Rush Fee (Priority Express)',      priceIDR:25000,  priceUSD:6,   cat:'addon',     badgeIDR:'25k', badgeUSD:'$6', approx:false },
+    { id:'rush-30k',    name:'Rush Fee (Priority Express)',      priceIDR:30000,  priceUSD:7,   cat:'addon',     badgeIDR:'30k', badgeUSD:'$7', approx:false },
+    { id:'rush-35k',    name:'Rush Fee (Priority Express)',      priceIDR:35000,  priceUSD:8,   cat:'addon',     badgeIDR:'35k', badgeUSD:'$8', approx:false },
+    { id:'rush-40k',    name:'Rush Fee (Priority Express)',      priceIDR:40000,  priceUSD:9,   cat:'addon',     badgeIDR:'40k', badgeUSD:'$9', approx:false },
+    { id:'rush-50k',    name:'Rush Fee (Priority Express)',      priceIDR:50000,  priceUSD:10,  cat:'addon',     badgeIDR:'50k', badgeUSD:'$10', approx:false },
+
+    /* Details Fee (Costume / Complexity) — Pilihan nominal bertingkat dengan penanda tag */
+    { id:'detail-50k',  name:'Details Fee (Costume / Complexity)', priceIDR:50000,  priceUSD:10,  cat:'addon',     badgeIDR:'50k', badgeUSD:'$10', approx:false },
+    { id:'detail-100k', name:'Details Fee (Costume / Complexity)', priceIDR:100000, priceUSD:18,  cat:'addon',     badgeIDR:'100k', badgeUSD:'$18', approx:false },
+    { id:'detail-150k', name:'Details Fee (Costume / Complexity)', priceIDR:150000, priceUSD:25,  cat:'addon',     badgeIDR:'150k', badgeUSD:'$25', approx:false },
+    { id:'detail-200k', name:'Details Fee (Costume / Complexity)', priceIDR:200000, priceUSD:35,  cat:'addon',     badgeIDR:'200k', badgeUSD:'$35', approx:false },
+
+    /* Ketentuan Khusus & Revisi */
+    { id:'addon-comm',   name:'Commercial Use',                   priceIDR:0,      priceUSD:0,   cat:'addon',     badge:'+100% (2×)', approx:true },
+    { id:'addon-couple', name:'Couple Artwork',                   priceIDR:0,      priceUSD:0,   cat:'addon',     badge:'2× Base',    approx:true },
+    { id:'addon-rev',    name:'Extra Revision',                   priceIDR:10000,  priceUSD:2,   cat:'addon',     badgeIDR:'+10k/rev', badgeUSD:'+$2/rev', approx:false },
   ];
 
   var BADGE_STYLE = {
-    'CS Simple':  'background:rgba(180,135,40,0.12);color:#966914;border:1px solid rgba(180,135,40,0.35)',
-    'CS Over':    'background:rgba(150,105,30,0.14);color:#7d5208;border:1px solid rgba(150,105,30,0.4)',
-    'Rush':       'background:rgba(215,115,25,0.12);color:#b35f0e;border:1px solid rgba(215,115,25,0.35)',
-    'BG+':        'background:rgba(25,145,130,0.12);color:#147a70;border:1px solid rgba(25,145,130,0.35)',
-    'Couple':     'background:rgba(205,90,130,0.12);color:#aa3966;border:1px solid rgba(205,90,130,0.35)',
-    'Commercial': 'background:rgba(201,151,42,0.15);color:#946a10;border:1px solid rgba(201,151,42,0.4)',
+    'CS Simple':   'background:rgba(180,135,40,0.12);color:#966914;border:1px solid rgba(180,135,40,0.35)',
+    'CS Over':     'background:rgba(150,105,30,0.14);color:#7d5208;border:1px solid rgba(150,105,30,0.4)',
+    '+100% (2×)':  'background:rgba(201,151,42,0.15);color:#946a10;border:1px solid rgba(201,151,42,0.4)',
+    '2× Base':     'background:rgba(205,90,130,0.12);color:#aa3966;border:1px solid rgba(205,90,130,0.35)',
     'Bebas Isi':   'background:rgba(201,151,42,0.18);color:#8d650e;border:1px solid rgba(201,151,42,0.45)',
   };
+
+  function getProductBadge(p){
+    if(state.currency === 'USD'){
+      return p.badgeUSD || p.badge || null;
+    }
+    return p.badgeIDR || p.badge || null;
+  }
+
+  function getBadgeStyle(badge, p){
+    if(BADGE_STYLE[badge]) return BADGE_STYLE[badge];
+    if(p && p.id && p.id.startsWith('rush-')){
+      return 'background:rgba(215,115,25,0.14);color:#b35f0e;border:1px solid rgba(215,115,25,0.38)';
+    }
+    if(p && p.id && p.id.startsWith('detail-')){
+      return 'background:rgba(25,145,130,0.14);color:#147a70;border:1px solid rgba(25,145,130,0.38)';
+    }
+    return 'background:rgba(201,151,42,0.12);color:#966914;border:1px solid rgba(201,151,42,0.35)';
+  }
 
   /* ── STATE ─────────────────────────────────────── */
   var state = { cart:[], status:'belum', activeCat:'all', search:'', discType:'persen', discVal:0, currency:'IDR' };
@@ -359,8 +393,13 @@ import Layout from '../layouts/Layout.astro';
   /* ── PRODUCTS ──────────────────────────────────── */
   function getFiltered(){
     return PRODUCTS.filter(function(p){
-      var catMatch = (state.activeCat==='all' || p.cat===state.activeCat || p.isCustom);
-      var searchMatch = (!state.search || p.name.toLowerCase().includes(state.search.toLowerCase()) || (p.isCustom && 'custom lainnya manual bebas tambahan opsi'.indexOf(state.search.toLowerCase()) !== -1));
+      if(p.onlyUSD && state.currency !== 'USD') return false;
+      var catMatch = (state.activeCat==='all' || p.cat===state.activeCat);
+      var b = getProductBadge(p) || '';
+      var q = state.search.toLowerCase();
+      var searchMatch = (!q
+        || p.name.toLowerCase().includes(q)
+        || b.toLowerCase().includes(q));
       return catMatch && searchMatch;
     });
   }
@@ -374,31 +413,10 @@ import Layout from '../layouts/Layout.astro';
     }
     var sym = currSymbol();
     grid.innerHTML=list.map(function(p){
-      var badge=p.badge?'<span class="prod-badge" style="'+(BADGE_STYLE[p.badge]||'')+'">'+p.badge+'</span>':'';
+      var b = getProductBadge(p);
+      var badge = b ? '<span class="prod-badge" style="'+getBadgeStyle(b, p)+'">'+b+'</span>' : '';
       var price = getProductPrice(p);
       
-      /* Card khusus: Item Lainnya / Custom (Nama & Harga diisi sendiri langsung di card) */
-      if(p.isCustom){
-        var placeholderVal = state.currency === 'USD' ? 'cth: 25' : 'cth: 50000';
-        return '<div class="prod-card prod-card-custom prod-card-full-custom" data-id="'+p.id+'">'
-          +'<div class="prod-card-top">'
-          +'  <div class="prod-name">✨ '+p.name+'</div>'
-          +   badge
-          +'</div>'
-          +'<div class="prod-divider"></div>'
-          +'<div class="card-inline-box">'
-          +'  <div class="card-inline-lbl">Nama Item:</div>'
-          +'  <input type="text" class="card-inline-name-inp" data-id="'+p.id+'" placeholder="cth: Weapon / Emote / Live2D" autocomplete="off" />'
-          +'  <div class="card-inline-lbl" style="margin-top:2px;">Nominal ('+sym+'):</div>'
-          +'  <div class="card-inline-input-wrap">'
-          +'    <span class="card-inline-curr">'+sym+'</span>'
-          +'    <input type="number" class="card-inline-inp" data-id="'+p.id+'" placeholder="'+placeholderVal+'" min="0" autocomplete="off" />'
-          +'  </div>'
-          +'  <button class="btn-pilih btn-inline-add-custom" data-id="'+p.id+'" type="button">+ Tambah</button>'
-          +'</div>'
-          +'</div>';
-      }
-
       /* Card khusus: input nominal harga langsung di kartu (contoh: Couple, Commercial Use) */
       if(price === 0){
         var placeholderVal = state.currency === 'USD' ? 'cth: 50' : 'cth: 150000';
@@ -436,76 +454,11 @@ import Layout from '../layouts/Layout.astro';
         +'</div>';
     }).join('');
 
-    /* Custom full card events: Name + Price */
-    grid.querySelectorAll('.card-inline-name-inp').forEach(function(inp){
-      inp.addEventListener('click', function(e){ e.stopPropagation(); });
-      inp.addEventListener('keydown', function(e){
-        if(e.key==='Enter'){
-          var card = inp.closest('.prod-card-full-custom');
-          var priceInp = card ? card.querySelector('.card-inline-inp') : null;
-          if(priceInp) priceInp.focus();
-        }
-      });
-    });
-
-    grid.querySelectorAll('.btn-inline-add-custom').forEach(function(btn){
-      btn.addEventListener('click', function(e){
-        e.stopPropagation();
-        var card = btn.closest('.prod-card-full-custom');
-        if(!card) return;
-        var nameInp = card.querySelector('.card-inline-name-inp');
-        var priceInp = card.querySelector('.card-inline-inp');
-        var nameVal = nameInp ? nameInp.value.trim() : '';
-        var priceVal = parseInt(priceInp ? priceInp.value : 0);
-
-        if(!nameVal){
-          if(nameInp) nameInp.focus();
-          showToast('Isi Nama Item', 'Tuliskan nama item yang ingin ditambahkan', '⚠️');
-          return;
-        }
-        if(!priceVal || priceVal <= 0){
-          if(priceInp) priceInp.focus();
-          showToast('Isi Nominal Harga', 'Tuliskan nominal harga ('+currSymbol()+') untuk ' + nameVal, '⚠️');
-          return;
-        }
-
-        state.cart.push({
-          uid: uid(),
-          id: 'custom-' + uid(),
-          name: nameVal,
-          price: priceVal,
-          qty: 1,
-          approx: false,
-          isCustomPrice: true
-        });
-
-        showToast('Ditambahkan ke Nota', nameVal + ' • ' + fmt(priceVal), '🌸');
-
-        if(nameInp) nameInp.value = '';
-        if(priceInp) priceInp.value = '';
-
-        btn.textContent = '✓ Ditambah!';
-        btn.classList.add('added');
-        setTimeout(function(){
-          btn.textContent = '+ Tambah';
-          btn.classList.remove('added');
-        }, 1000);
-
-        renderCart();
-        updateTotals();
-      });
-    });
-
-    /* Custom inline price-only input events */
+    /* Custom inline price-only input events (e.g. Commercial Use, Couple Artwork) */
     grid.querySelectorAll('.card-inline-inp').forEach(function(inp){
       inp.addEventListener('click', function(e){ e.stopPropagation(); });
       inp.addEventListener('keydown', function(e){
         if(e.key==='Enter'){
-          var customBtn = inp.closest('.prod-card-full-custom') ? inp.closest('.prod-card-full-custom').querySelector('.btn-inline-add-custom') : null;
-          if(customBtn){
-            customBtn.click();
-            return;
-          }
           var btn = grid.querySelector('.btn-inline-add[data-id="'+inp.dataset.id+'"]');
           if(btn) btn.click();
         }
@@ -525,8 +478,10 @@ import Layout from '../layouts/Layout.astro';
           showToast('Isi Nominal Harga', 'Tuliskan harga ('+currSymbol()+') untuk ' + p.name, '⚠️');
           return;
         }
-        state.cart.push({uid:uid(), id:p.id, name:p.name, price:val, qty:1, approx:true, isCustomPrice:true});
-        showToast('Ditambahkan ke Nota', p.name + ' • ' + fmt(val), '🌸');
+        var b = getProductBadge(p);
+        state.cart.push({uid:uid(), id:p.id, name:p.name, tag:b, price:val, qty:1, approx:true, isCustomPrice:true});
+        var badgeText = b ? ' [' + b + ']' : '';
+        showToast('Ditambahkan ke Nota', p.name + badgeText + ' • ' + fmt(val), '🌸');
         btn.textContent = '✓ Ditambah!';
         btn.classList.add('added');
         setTimeout(function(){
@@ -558,11 +513,13 @@ import Layout from '../layouts/Layout.astro';
   /* ── CART ──────────────────────────────────────── */
   function addToCart(p){
     var price = getProductPrice(p);
+    var b = getProductBadge(p);
     var ex=state.cart.find(function(i){return i.id===p.id;});
     if(ex){ ex.qty++; }
-    else { state.cart.push({uid:uid(),id:p.id,name:p.name,price:price,qty:1,approx:p.approx,isCustomPrice:false}); }
+    else { state.cart.push({uid:uid(),id:p.id,name:p.name,tag:b,price:price,qty:1,approx:p.approx,isCustomPrice:false}); }
 
-    showToast('Ditambahkan ke Nota', p.name + ' • ' + fmt(price) + (p.approx?'~':''), '🌸');
+    var badgeText = b ? ' [' + b + ']' : '';
+    showToast('Ditambahkan ke Nota', p.name + badgeText + ' • ' + fmt(price) + (p.approx?'~':''), '🌸');
 
     var btn=document.querySelector('.btn-pilih[data-id="'+p.id+'"]');
     if(btn){
@@ -602,8 +559,9 @@ import Layout from '../layouts/Layout.astro';
       return;
     }
     body.innerHTML=state.cart.map(function(item){
+      var tagHtml = item.tag ? '<span class="item-tag-badge">' + item.tag + '</span>' : '';
       return '<div class="item-row">'
-        +'<div class="item-name">'+item.name+(item.approx?'<span class="approx">~</span>':'')+'</div>'
+        +'<div class="item-name">'+item.name+(item.approx?'<span class="approx">~</span>':'')+tagHtml+'</div>'
         +'<div class="item-price">'+fmt(item.price)+'</div>'
         +'<div class="item-qty">'
         +'  <button class="qty-btn" data-uid="'+item.uid+'" data-delta="-1" type="button">−</button>'
@@ -728,7 +686,8 @@ import Layout from '../layouts/Layout.astro';
     }
 
     var itemsText = state.cart.map(function(item, idx){
-      return (idx + 1) + '. *' + item.name + (item.approx ? '~' : '') + '* (' + item.qty + '×) : ' + fmt(item.price * item.qty);
+      var tagText = item.tag ? ' [' + item.tag + ']' : '';
+      return (idx + 1) + '. *' + item.name + (item.approx ? '~' : '') + '*' + tagText + ' (' + item.qty + '×) : ' + fmt(item.price * item.qty);
     }).join('\n');
 
     var discText = r.discount > 0 ? ('\nDiskon Faktur: -' + fmt(r.discount)) : '';
@@ -769,6 +728,7 @@ import Layout from '../layouts/Layout.astro';
       var prod = PRODUCTS.find(function(p){ return p.id === item.id; });
       if(prod && !item.isCustomPrice && getProductPrice(prod) > 0){
         item.price = (curr === 'USD' ? prod.priceUSD : prod.priceIDR);
+        item.tag = getProductBadge(prod);
       }
     });
 
@@ -807,66 +767,66 @@ import Layout from '../layouts/Layout.astro';
     var cName=(el('c-name')&&el('c-name').value.trim())||'—';
     var cWa  =(el('c-wa')  &&el('c-wa').value.trim())  ||'—';
     var r=calcTotals();
-    var today=getToday();
+    var today=new Date().toLocaleDateString('en-US',{day:'2-digit',month:'short',year:'numeric'});
     var isLunas=state.status==='lunas';
-    var statusText =isLunas?'SUDAH LUNAS ✓':'BELUM BAYAR';
+    var statusText =isLunas?'PAID IN FULL ✓':'PAYMENT PENDING';
     var statusStyle=isLunas
       ?'background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7;'
       :'background:#fff8e1;color:#b26a00;border:1px solid #ffe082;';
 
     var itemsHTML=state.cart.length===0
-      ?'<div style="color:#8b7355;font-size:12px;text-align:center;padding:14px 0;">— Belum ada item dipilih —</div>'
+      ?'<div style="color:#8b7355;font-size:12px;text-align:center;padding:14px 0;">— No items selected —</div>'
       :state.cart.map(function(item){
+          var tagHtml = item.tag
+            ? '<span style="display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;font-size:9px;font-weight:700;background:rgba(201,151,42,0.12);color:#966914;border:1px solid rgba(201,151,42,0.3);vertical-align:middle;">' + item.tag + '</span>'
+            : '';
           return '<div style="display:flex;justify-content:space-between;align-items:flex-start;padding:8px 0;border-bottom:1px solid #ede4d2;">'
-            +'<div style="flex:1;color:#2a1f0e;font-size:12px;font-weight:700;line-height:1.4;">'+item.name+(item.approx?'~':'')+'</div>'
+            +'<div style="flex:1;color:#2a1f0e;font-size:12px;font-weight:700;line-height:1.4;">'+item.name+(item.approx?'~':'')+tagHtml+'</div>'
             +'<div style="margin-left:12px;color:#8b7355;font-size:11px;font-weight:600;white-space:nowrap;">'+item.qty+'×</div>'
             +'<div style="margin-left:12px;color:#c9972a;font-size:12px;font-weight:800;white-space:nowrap;">'+fmt(item.price*item.qty)+'</div>'
             +'</div>';
         }).join('');
 
     var discHTML=r.discount>0
-      ?'<div style="display:flex;justify-content:space-between;padding:5px 0;color:#b26a00;font-size:12px;font-weight:700;"><span>Diskon</span><span>- '+fmt(r.discount)+'</span></div>'
+      ?'<div style="display:flex;justify-content:space-between;padding:5px 0;color:#b26a00;font-size:12px;font-weight:700;"><span>Discount</span><span>- '+fmt(r.discount)+'</span></div>'
       :'';
 
-    var currBadge = state.currency==='USD' ? '🌍 USD ($)' : '🇮🇩 IDR (Rp)';
-
-    return '<div id="receipt-card" style="width:420px;background:#fcfbf8;border:2px solid #dfd4c0;border-radius:16px;padding:32px 30px;font-family:Nunito,Segoe UI,sans-serif;color:#2a1f0e;box-shadow:0 10px 30px rgba(180,140,70,0.1);">'
+    return '<div id="receipt-card" style="width:420px;max-width:100%;background:#fcfbf8;border:2px solid #dfd4c0;border-radius:16px;padding:28px 24px;box-sizing:border-box;font-family:Nunito,Segoe UI,sans-serif;color:#2a1f0e;box-shadow:0 10px 30px rgba(180,140,70,0.1);">'
       /* Header */
-      +'<div style="text-align:center;margin-bottom:22px;padding-bottom:18px;border-bottom:1.5px dashed #dfd4c0;">'
+      +'<div style="text-align:center;margin-bottom:20px;padding-bottom:16px;border-bottom:1.5px dashed #dfd4c0;">'
       +'<div style="font-size:32px;margin-bottom:6px;filter:drop-shadow(0 2px 4px rgba(201,151,42,0.3));">🌸</div>'
       +'<div style="font-family:\'Playfair Display\',Georgia,serif;font-size:26px;font-weight:700;color:#2a1f0e;letter-spacing:0.04em;">Amai Nota</div>'
-      +'<div style="font-size:10px;color:#8b7355;letter-spacing:0.14em;text-transform:uppercase;margin-top:4px;font-weight:700;">Digital POS & Kwitansi Komisi</div>'
+      +'<div style="font-size:10px;color:#8b7355;letter-spacing:0.14em;text-transform:uppercase;margin-top:4px;font-weight:700;">Official Commission Receipt</div>'
       +'<div style="display:inline-block;margin-top:8px;padding:3px 12px;background:#f5efe4;border-radius:999px;font-size:11px;color:#8b7355;font-weight:600;">📅 '+today+'</div>'
       +'</div>'
       /* Customer Box */
       +'<div style="margin-bottom:16px;padding:14px 16px;background:#faf6ed;border-radius:12px;border:1.5px solid #e5dccb;">'
-      +'<div style="font-size:10px;color:#8b7355;text-transform:uppercase;letter-spacing:0.1em;font-weight:800;margin-bottom:6px;">👤 Customer Info</div>'
+      +'<div style="font-size:10px;color:#8b7355;text-transform:uppercase;letter-spacing:0.1em;font-weight:800;margin-bottom:6px;">👤 Client Details</div>'
       +'<div style="font-size:16px;font-weight:800;color:#2a1f0e;">'+cName+'</div>'
-      +'<div style="font-size:12px;color:#8b7355;margin-top:2px;">WhatsApp: '+cWa+'</div>'
+      +'<div style="font-size:12px;color:#8b7355;margin-top:2px;">Contact: '+cWa+'</div>'
       +'<div style="margin-top:10px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;">'
       +'<span style="padding:4px 14px;border-radius:9999px;font-size:10px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;'+statusStyle+'">'+statusText+'</span>'
-      +'<span style="padding:4px 10px;border-radius:9999px;font-size:10px;font-weight:800;background:rgba(201,151,42,0.12);color:#966914;border:1px solid rgba(201,151,42,0.35);">'+currBadge+'</span>'
       +'</div>'
       +'</div>'
       /* Items Table */
       +'<div style="margin-bottom:16px;">'
       +'<div style="display:flex;justify-content:space-between;font-size:10px;color:#8b7355;text-transform:uppercase;letter-spacing:0.1em;font-weight:800;margin-bottom:8px;padding-bottom:4px;border-bottom:1.5px solid #dfd4c0;">'
-      +'<span>Item Komisi</span><span>Qty × Subtotal</span></div>'
+      +'<span>Commission Item</span><span>Qty × Subtotal</span></div>'
       +itemsHTML
       +'</div>'
       /* Totals */
       +'<div style="border-top:1.5px dashed #dfd4c0;padding-top:12px;margin-bottom:18px;">'
-      +'<div style="display:flex;justify-content:space-between;padding:4px 0;color:#8b7355;font-size:12px;font-weight:600;"><span>Subtotal Kotor</span><span style="color:#2a1f0e;font-weight:700;">'+fmt(r.subtotal)+'</span></div>'
+      +'<div style="display:flex;justify-content:space-between;padding:4px 0;color:#8b7355;font-size:12px;font-weight:600;"><span>Subtotal</span><span style="color:#2a1f0e;font-weight:700;">'+fmt(r.subtotal)+'</span></div>'
       +discHTML
       +'<div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding:12px 14px;background:linear-gradient(135deg,#c9972a,#dfb242);border-radius:10px;color:#ffffff;box-shadow:0 4px 14px rgba(201,151,42,0.35);">'
-      +'<span style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;">Total Tagihan:</span>'
+      +'<span style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;">Total Amount Due:</span>'
       +'<span style="font-size:22px;font-weight:800;text-shadow:0 1px 3px rgba(0,0,0,0.2);">'+fmt(r.total)+'</span>'
       +'</div></div>'
       /* Footer */
       +'<div style="text-align:center;border-top:1.5px dashed #dfd4c0;padding-top:14px;color:#8b7355;font-size:11px;line-height:1.7;font-style:italic;">'
-      +'<div style="font-weight:700;color:#2a1f0e;">✦ Terima kasih atas kepercayaan dan kerjasamanya! 🌸</div>'
-      +'<div>Konfirmasi detail & harga final via DM sebelum pengerjaan.</div>'
-      +'<div style="margin-top:6px;font-size:10px;color:#c9972a;font-weight:700;font-style:normal;">— Amai Nota • Digital POS —</div>'
+      +'<div style="font-weight:700;color:#2a1f0e;">✦ Thank you for your trust and support! 🌸</div>'
+      +'<div>Please confirm final details & payment via DM before production.</div>'
+      +'<div style="margin-top:6px;font-size:10px;color:#c9972a;font-weight:700;font-style:normal;">— Amai Nota • Digital Commission Invoice —</div>'
       +'</div></div>';
   }
 
@@ -880,23 +840,59 @@ import Layout from '../layouts/Layout.astro';
 
   function downloadReceipt(){
     if(!validateCustomer(true)) return;
-    var render=el('r-render'); if(!render) return;
-    render.innerHTML=buildReceiptHTML();
-    var card=render.firstElementChild; if(!card) return;
     if(typeof html2canvas==='undefined'){
       showToast('Gagal Memuat', 'html2canvas belum termuat', '⚠️');
       return;
     }
     showToast('Memproses Nota', 'Foto nota sedang disiapkan...', '📸');
-    html2canvas(card,{scale:2,backgroundColor:'#fcfbf8',logging:false,useCORS:true}).then(function(canvas){
+
+    // Create an unconstrained off-screen stage so html2canvas captures 100% full height without clipping
+    var stage = document.createElement('div');
+    stage.style.position = 'fixed';
+    stage.style.left = '-9999px';
+    stage.style.top = '0';
+    stage.style.width = '420px';
+    stage.style.zIndex = '-9999';
+    stage.style.opacity = '0';
+    stage.style.pointerEvents = 'none';
+    stage.innerHTML = buildReceiptHTML();
+    document.body.appendChild(stage);
+
+    var card = stage.querySelector('#receipt-card');
+    if(!card){
+      if(stage.parentNode) stage.parentNode.removeChild(stage);
+      return;
+    }
+
+    var cardWidth = 420;
+    var cardHeight = card.offsetHeight || card.scrollHeight;
+
+    html2canvas(card, {
+      scale: 2,
+      backgroundColor: '#fcfbf8',
+      logging: false,
+      useCORS: true,
+      width: cardWidth,
+      height: cardHeight,
+      windowWidth: cardWidth,
+      windowHeight: cardHeight,
+      scrollX: 0,
+      scrollY: 0,
+      x: 0,
+      y: 0
+    }).then(function(canvas){
       var link=document.createElement('a');
       link.download='nota-amai-'+Date.now()+'.png';
       link.href=canvas.toDataURL('image/png');
       link.click();
-      showToast('Foto Nota Disimpan!', 'Transaksi tetap tersimpan (hapus manual bila perlu)', '✅');
+      showToast('Foto Nota Disimpan!', 'Nota berhasil diunduh secara penuh & jernih', '✅');
     }).catch(function(err){
       console.error(err);
       showToast('Gagal Mengunduh', 'Gagal memproses gambar nota', '❌');
+    }).finally(function(){
+      if(stage && stage.parentNode){
+        stage.parentNode.removeChild(stage);
+      }
     });
   }
 
@@ -1870,21 +1866,33 @@ import Layout from '../layouts/Layout.astro';
 .cust-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.6rem;
+  gap: 0.65rem;
+  align-items: start;
 }
 .field {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
+  min-width: 0;
 }
 .field-label {
   font-size: 0.67rem;
   font-weight: 800;
   color: var(--amai-muted);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  min-height: 18px;
+  line-height: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .field-input {
+  height: 40px;
+  box-sizing: border-box;
   padding: 0.52rem 0.75rem;
   background: #faf7f2;
   border: 1.5px solid var(--amai-border);
@@ -1987,6 +1995,18 @@ import Layout from '../layouts/Layout.astro';
   color: var(--amai-cream);
   line-height: 1.3;
   word-break: break-word;
+}
+.item-tag-badge {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 1px 6px;
+  border-radius: 9999px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  background: rgba(201, 151, 42, 0.12);
+  color: #966914;
+  border: 1px solid rgba(201, 151, 42, 0.3);
+  vertical-align: middle;
 }
 .item-price {
   font-size: 0.72rem;
@@ -2106,10 +2126,10 @@ import Layout from '../layouts/Layout.astro';
 }
 
 .disc-controls-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 0.6rem;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  width: 100%;
 }
 
 .disc-segmented-wrap {
@@ -2119,6 +2139,8 @@ import Layout from '../layouts/Layout.astro';
   border-radius: 10px;
   padding: 3px;
   gap: 3px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .disc-segment-btn {
@@ -2162,9 +2184,10 @@ import Layout from '../layouts/Layout.astro';
   border: 1.5px solid var(--amai-border);
   border-radius: 10px;
   overflow: hidden;
-  height: 38px;
+  height: 40px;
   transition: all 0.2s;
   width: 100%;
+  box-sizing: border-box;
 }
 .disc-input-wrap:focus-within {
   border-color: var(--amai-accent);
@@ -2340,15 +2363,18 @@ import Layout from '../layouts/Layout.astro';
   inset: 0;
   z-index: 100;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  overflow-y: auto;
+  padding: 2.5rem 1rem;
 }
 .r-modal.hidden { display: none; }
 .r-backdrop {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  background: rgba(35, 25, 15, 0.65);
+  background: rgba(35, 25, 15, 0.7);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 .r-container {
   position: relative;
@@ -2356,15 +2382,14 @@ import Layout from '../layouts/Layout.astro';
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 1.5rem;
+  gap: 1.1rem;
+  margin: auto;
+  max-width: 100%;
+  padding-bottom: 2rem;
 }
 #r-render {
-  overflow: hidden;
-  box-shadow: 0 24px 70px rgba(0,0,0,0.35), 0 0 0 1px rgba(201,151,42,0.4);
   border-radius: 16px;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.35), 0 0 0 1px rgba(201,151,42,0.4);
 }
 .r-modal-btns {
   display: flex;
@@ -3004,6 +3029,65 @@ import Layout from '../layouts/Layout.astro';
   .wa-btn {
     padding: 0.65rem 0.45rem !important;
     font-size: 0.8rem !important;
+  }
+
+  /* Receipt Modal on Mobile: Floating compact card & elevated floating button dock */
+  .r-modal {
+    padding: 1.5rem 0.75rem calc(105px + env(safe-area-inset-bottom, 20px)) 0.75rem !important;
+    align-items: flex-start !important;
+  }
+  .r-container {
+    width: 100% !important;
+    max-width: 340px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    gap: 1rem !important;
+  }
+  #r-render {
+    width: 100% !important;
+    max-width: 340px !important;
+    display: flex !important;
+    justify-content: center !important;
+    border-radius: 16px !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5) !important;
+  }
+  #r-render #receipt-card {
+    width: 100% !important;
+    max-width: 340px !important;
+    padding: 18px 14px !important;
+    border-radius: 16px !important;
+    box-sizing: border-box !important;
+  }
+  .r-modal-btns {
+    position: fixed !important;
+    bottom: calc(22px + env(safe-area-inset-bottom, 16px)) !important;
+    left: 14px !important;
+    right: 14px !important;
+    max-width: 340px !important;
+    margin: 0 auto !important;
+    z-index: 105 !important;
+    background: rgba(26, 18, 10, 0.95) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+    border: 1.5px solid rgba(201, 151, 42, 0.45) !important;
+    border-radius: 16px !important;
+    padding: 8px !important;
+    display: grid !important;
+    grid-template-columns: 0.85fr 1.2fr 1.2fr !important;
+    gap: 0.45rem !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55), 0 0 15px rgba(201, 151, 42, 0.2) !important;
+  }
+  .r-close-btn, .r-wa-btn, .r-dl-btn {
+    padding: 0.65rem 0.35rem !important;
+    border-radius: 10px !important;
+    font-size: 0.76rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+  }
+  .r-btn-txt {
+    display: none !important;
   }
 }
 </style>

@@ -49,13 +49,13 @@
 
 | Paket                          | 🇮🇩 IDR       | 🌍 USD              |
 |--------------------------------|----------------|---------------------|
-| Bust Up                        | Rp 80.000      | $25                 |
+| Bust Up                        | Rp 140.000     | $25                 |
 | Genshin Avatar Icon            | Rp 100.000     | $30                 |
-| Half Body                      | Rp 150.000     | $40                 |
-| Full Body                      | Rp 200.000     | $60                 |
-| Genshin Drip Marketing         | Rp 260.000     | $70                 |
-| Character Sheet (Simple)       | Rp 250.000~    | $85~                |
-| Character Sheet (Overdetailed) | Rp 500.000~    | $140 / $145 / $150~ |
+| Half Body                      | Rp 250.000     | $40                 |
+| Full Body                      | Rp 300.000     | $60                 |
+| Character Sheet (Simple)       | Mulai Rp 350.000~ | Start from $85~  |
+| Genshin Drip Marketing         | Rp 400.000     | $70                 |
+| Character Sheet (Overdetailed) | Mulai Rp 700.000~ | Start from $140 / $145 / $150~ |
 
 > **Catatan tilde (~):** Tanda `~` berarti harga bisa naik tergantung detail & kompleksitas karakter.
 
@@ -67,13 +67,13 @@ Buat tombol klik cepat untuk setiap harga. Saat diklik, tombol menampilkan toolt
 Susun dalam **grid 2 kolom (IDR | USD)**, grouping per paket:
 
 ```
-[ Bust Up — Rp 80k ]         [ Bust Up — $25 ]
+[ Bust Up — Rp 140k ]        [ Bust Up — $25 ]
 [ Avatar Icon — Rp 100k ]    [ Avatar Icon — $30 ]
-[ Half Body — Rp 150k ]      [ Half Body — $40 ]
-[ Full Body — Rp 200k ]      [ Full Body — $60 ]
-[ Drip Marketing — Rp 260k ] [ Drip Marketing — $70 ]
-[ CS Simple — Rp 250k~ ]     [ CS Simple — $85~ ]
-[ CS Overdetailed — Rp 500k~ ] [ CS Overdetailed — $140~ ]
+[ Half Body — Rp 250k ]      [ Half Body — $40 ]
+[ Full Body — Rp 300k ]      [ Full Body — $60 ]
+[ CS Simple — Rp 350k~ ]     [ CS Simple — $85~ ]
+[ Drip Marketing — Rp 400k ] [ Drip Marketing — $70 ]
+[ CS Overdetailed — Rp 700k~ ] [ CS Overdetailed — $140~ ]
                                [ CS Overdetailed — $145~ ]
                                [ CS Overdetailed — $150~ ]
 ```
@@ -87,14 +87,14 @@ Susun dalam **grid 2 kolom (IDR | USD)**, grouping per paket:
 
 Tampilkan dalam card/badge section terpisah di bawah tabel utama:
 
-| Tambahan                 | Harga                              |
-|--------------------------|------------------------------------|
-| 🖼️ Background           | + Rp 50.000                        |
-| ⚡ Rush Fee              | + Rp 10.000 ~ Rp 50.000            |
-| 💼 Commercial / Komersial | 100% dari base price (2× lipat)   |
-| 👫 Couple                | 2× base price                      |
-| 🔄 Revisi Ekstra         | + Rp 10.000 / + $2                 |
-| 🎨 Background + Detail   | + Rp 30.000–200.000 / + $5–$25     |
+| Tambahan                              | 🇮🇩 IDR                       | 🌍 USD             |
+|---------------------------------------|--------------------------------|--------------------|
+| 🖼️ Background Art                    | Rp 50.000                      | $10                |
+| ⚡ Rush Fee (Priority Express)        | +Rp 10.000 ~ Rp 50.000 (10k, 15k, 20k, 25k, 30k, 35k, 40k, 50k) | +$3 ~ $10 ($3, $4, $5, $6, $7, $8, $9, $10) |
+| 🎨 Details Fee (Costume / Complexity) | +Rp 50.000 ~ Rp 200.000 (50k, 100k, 150k, 200k) | +$10 ~ $35 ($10, $18, $25, $35) |
+| 💼 Commercial Use                     | +100% harga dasar (2× lipat)   | +100% base price (2×) |
+| 👫 Couple Artwork                     | 2× harga dasar                 | 2× base price      |
+| 🔄 Revisi Ekstra                      | Mulai +Rp 10.000 / revisi      | Start from +$2 / rev |
 
 ---
 
